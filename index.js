@@ -10,6 +10,10 @@ input NewUser {
     lastName: String
 }
 
+input NewPost {
+    id: Int
+    content: String
+}
 
 type User{
   id: Int 
@@ -33,13 +37,16 @@ type Query {
     posts: [Post]
 }
 
+type Fragment {
+    
+}
+
 type Mutation {
     createUser(input: NewUser): User
+    createPost(input: NewPost): Post
 } 
 
 `;
-
-
 
 const users = [{
     id: 1,
@@ -53,7 +60,7 @@ const posts = [{
 
     id: 1,
     author: users,
-    comments: [],
+    //comments: posts,
     content: 'test',
     createdAt: 2018 - 10 - 02,
     updatedAt: 2018 - 11 - 03,
@@ -72,11 +79,15 @@ const resolvers = {
             password: input.password,
             firstName: input.firstName,
             lastName: input.lastName
+        }),
+
+        createPost: (root, { input }) => ({
+            id: input.id,
+            content: input.content
         })
+
     }
 };
-
-
 
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
