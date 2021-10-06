@@ -16,7 +16,7 @@ input NewPost {
 }
 
 type User{
-  id: Int 
+  id: Int
   email: String
   password: String
   firstName: String
@@ -35,6 +35,7 @@ type Post {
 type Query {
     users: [User]
     posts: [Post]
+    getPost(id: Int): Post
 }
 
 
@@ -97,7 +98,10 @@ const resolvers = {
 
     Query: {
         users: () => users,
-        posts: () => posts
+        posts: () => posts,
+        getPost: (root, { id }) => {
+            users
+        }
     },
     Mutation: {
         createUser: (root, { input }) => ({
