@@ -37,9 +37,6 @@ type Query {
     posts: [Post]
 }
 
-type Fragment {
-    
-}
 
 type Mutation {
     createUser(input: NewUser): User
@@ -49,25 +46,55 @@ type Mutation {
 `;
 
 const users = [{
-    id: 1,
-    email: 'fawzy-elsam@outlook.fr',
-    password: '12345',
-    firstName: 'Fawzy',
-    lastName: 'Elsam'
-}, ];
+        id: 1,
+        email: 'fawzy-elsam@outlook.fr',
+        password: '12345',
+        firstName: 'Fawzy',
+        lastName: 'Elsam'
+    },
+    {
+        id: 2,
+        email: 'fawzy-elsam@outlook.fr',
+        password: '12345',
+        firstName: 'Fawzy',
+        lastName: 'Elsam'
+    }
+];
 
 const posts = [{
 
-    id: 1,
-    author: users,
-    //comments: posts,
-    content: 'test',
-    createdAt: 2018 - 10 - 02,
-    updatedAt: 2018 - 11 - 03,
+        id: 1,
+        author: users,
+        //comments: posts,
+        content: 'test0',
+        createdAt: 2018 - 10 - 02,
+        updatedAt: 2018 - 11 - 03,
 
-}, ];
+    },
+    {
+
+        id: 2,
+        author: users,
+        //comments: posts,
+        content: 'test1',
+        createdAt: 2018 - 10 - 02,
+        updatedAt: 2018 - 11 - 03,
+
+    },
+    {
+
+        id: 3,
+        author: users,
+        //comments: posts,
+        content: 'test3',
+        createdAt: 2018 - 10 - 02,
+        updatedAt: 2018 - 11 - 03,
+
+    },
+];
 
 const resolvers = {
+
     Query: {
         users: () => users,
         posts: () => posts
